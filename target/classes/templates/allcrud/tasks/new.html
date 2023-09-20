@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-5">
+    <form th:method="post" th:action="@{/allcrud/tasks}" th:object="${task}">
+        <div class="input-group mb-3">
+            <span class="input-group-text">taskTitle</span>
+            <input type="text" class="form-control" th:field="*{taskTitle}" name="taskTitle" id="taskTitle"/>
+            <span th:if="${#fields.hasErrors('taskTitle')}" th:errors="*{taskTitle}" class="mx-2"></span>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">taskTitle</span>
+            <input type="text" class="form-control" th:field="*{taskDescription}" name="taskDescription" id="taskDescription"/>
+            <span th:if="${#fields.hasErrors('taskDescription')}" th:errors="*{taskDescription}" class="mx-2"></span>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">taskTitle</span>
+            <input type="text" class="form-control" th:field="*{taskStatus}" name="taskStatus" id="taskStatus"/>
+            <span th:if="${#fields.hasErrors('taskStatus')}" th:errors="*{taskStatus}" class="mx-2"></span>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">taskTitle</span>
+            <input type="text" class="form-control" th:field="*{taskPriority}" name="taskPriority" id="taskPriority"/>
+            <span th:if="${#fields.hasErrors('taskPriority')}" th:errors="*{taskPriority}" class="mx-2"></span>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">taskTitle</span>
+            <input type="text" class="form-control" th:field="*{deadline}" name="deadline" id="deadline"/>
+            <span th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}" class="mx-2"></span>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">User</span>
+            <select class="form-control" name="role">
+                <option th:each="role : ${users}" th:text="${role.getUsername()}" th:value="${role.getId()}"></option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">taskcat</span>
+            <select class="form-control" name="role">
+                <option th:each="role : ${taskcat}" th:text="${role.getTaskTitle()}" th:value="${role.getId()}"></option>
+            </select>
+        </div>
+        <input type="submit" value="Update!" class="form-control btn btn-primary"/>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+</html>
